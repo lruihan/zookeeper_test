@@ -46,21 +46,21 @@ public class ZkConnect {
     public static void main( String[] args ) throws Exception {
         ZkConnect zkConnect = new ZkConnect();
         ZooKeeper zooKeeper = zkConnect.connect("127.0.0.1");
-        String newNode = "/deepakDate";
+        String newNode = "/testChange";
         zkConnect.createNode(newNode, new Date().toString().getBytes());
-        List<String> zNodes = zooKeeper.getChildren("/", true);
-        for(String zNode : zNodes) {
-            System.out.println("ChildrenNode: " + zNode);
-        }
-        byte[] data = zooKeeper.getData(newNode, true, zooKeeper.exists(newNode, true));
-        System.out.println("GetData before setting: " + new String(data));
-
-        zkConnect.updateNode(newNode, "Modified data".getBytes());
-        data = zooKeeper.getData(newNode, true, zooKeeper.exists(newNode, true));
-
-        System.out.println("GetData after setting: " + new String(data));
-
-        zkConnect.deleteNode(newNode);
+//        List<String> zNodes = zooKeeper.getChildren("/", true);
+//        for(String zNode : zNodes) {
+//            System.out.println("ChildrenNode: " + zNode);
+//        }
+//        byte[] data = zooKeeper.getData(newNode, true, zooKeeper.exists(newNode, true));
+//        System.out.println("GetData before setting: " + new String(data));
+//
+//        zkConnect.updateNode(newNode, "Modified data".getBytes());
+//        data = zooKeeper.getData(newNode, true, zooKeeper.exists(newNode, true));
+//
+//        System.out.println("GetData after setting: " + new String(data));
+//
+//        zkConnect.deleteNode(newNode);
 
         zkConnect.close();
     }
